@@ -2,10 +2,10 @@
 
 > `first_project`폴더는 아래 명령어를 통해 생성된 **프로젝트 셋팅 폴더**이다.
 ```bash
-$ django-admin startapp [프로젝트이름]
+$ django-admin startproject [프로젝트이름]
 
 # 예
-$ django-admin startapp first_project
+$ django-admin startproject first_project
 ```
 
 ### 1. 프로젝트 폴더 내 각 파일 설명

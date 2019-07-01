@@ -1,16 +1,18 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>First App</title>
+    <title>SPIDER man</title>
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
 </head>
 
 <body>
-    <h1>HELLO</h1>
-    {{ insert_me }}
+    <h1>Hi, This is a picture of Spider man!</h1>
+    <img src="{% static 'images/Spider.jpg' %}" alt="spidername" srcset="">
 </body>
 
 </html>

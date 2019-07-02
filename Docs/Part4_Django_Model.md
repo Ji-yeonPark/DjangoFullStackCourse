@@ -56,3 +56,18 @@ Password:
 Password (again): 
 Superuser created successfully.
 ```
+
+
+### MTV
+
+> **MTV** 방식이란<br/>
+> M : Models : 테이블 정의<br/>
+> T : Templates : 클라이언트 화면 정의<br/>
+> V : Views : 앱 로직 정의<br/>
+> 세 부분으로 나누어 개발하는 방식이다.
+
+- 장점 :<br/>
+  - M, T, V간 독립성 유지 가능
+  - 데이터베이스관리자(M), 개발자(V), 디자이너(T)간 협업 쉬움.
+
+

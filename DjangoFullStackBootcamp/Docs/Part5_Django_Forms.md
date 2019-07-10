@@ -37,7 +37,7 @@ def form_name_view(request):
     return render(request, 'form_name.html', {'form': form})
 ```
 
-3. 보낸 form 을 html 에 표시한다.
+3. 보낸 form 을 `html`에 표시한다.
 ```html
 <!-- form_name.html  -->
 {{ form }}
@@ -54,7 +54,7 @@ def form_name_view(request):
 </div>
 ```
 
-4. Views.py에서 form에서 전달받은 값 접근.
+4. `Views.py`에서 form에서 전달받은 값 접근.
 
 `cleaned_data`로 접근 가능하다.
 ```python
@@ -127,4 +127,53 @@ class FormName(forms.Form):
             raise forms.ValidationError("Make sure emails match!")
 ```
 
+### 1. 설정 방법 (2) : Model Forms이용
+
+1. `models.py`에 테이블 선언
+```python
+# models.py
+from django.db import models
+
+# Create your models here
+class User(models.Model):
+    first_name = models.CharField(max_length=128)
+    last_name = models.CharField(max_length=128)
+    email = models.EmailField(max_length=254, unique=True)
+```
+
+
+2. `forms.py`에서 선언한 model 정보 불러옴<br/>
+`forms.ModelForm`가 포인트!
+```python
+# forms.py
+
+from first_app.models import User
+
+class NewUserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = '__all__'
+```
+
+
+3. `views.py`에서 forms를 이용하여 데이터베이스에 데이터 삽입 및 validation 체크 가능
+```python
+# views.py
+from django.shortcuts import render
+from .forms import NewUserForm
+
+def users(request):
+    form = NewUserForm()
+
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+
+        if form.is_valid():  # Check the validation
+            form.save(commit=True)
+            return index(request)
+        else:
+            print ('ERROR FROM INVALID')
+
+    return render(request, 'first_app/users.html', {'form': form})
+```
 

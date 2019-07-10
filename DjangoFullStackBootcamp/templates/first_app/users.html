@@ -7,19 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
-    <!-- <link rel="stylesheet" href="{% static 'css/mystyle.css' %}"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 </head>
 
 <body>
     <div class="container">
-        <div class="jumbotron">
-            <h1>Hi Welcome to home page!</h1>
-            <h2>Go to /formpage to fill out the form</h2>
-            <h2>Go to /users to sign up!</h2>
-        </div>
+        <h1>Please Sign up here!</h1>
+        <form method="POST">
+            {{ form.as_p }}
+
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="submit">
+        </form>
     </div>
+
 </body>
 
 </html>
